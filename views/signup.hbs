@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="stylesheet" href="css/{{viewCss}}">
+
+</head>
+
+<body>
+    
+    {{!-- <header>
+        {{> nav }}
+    </header> --}}
+ 	<div class="page">
+  <div class="container">
+    <div class="left">
+      <div class="login">Sign up</div>
+      <div class="eula">By signing in, you have been authenticated to use our API's. This authentication process ensures that only authorized users are able to access the data and services provided by our API's.</div>
+    </div>
+     {{!-- In addition, it also helps protect your personal information from unauthorized access or misuse of the system. With this secure authentication process in place, you can rest assured that your data is safe and secure when using our API's. --}}
+    <div class="right">
+      <div class="" style="margin: 25px;">
+        <form action="/signup" id="nameform" method="post">
+        <label for="cName">Name</label>
+        <input type="text" name="cName">
+        <label for="email">Email</label>
+        <input type="email" name="email">
+        <label for="password">Password</label>
+        <input type="password" name="repassword">
+        <label for="repassword">Re-enter password</label>
+        <input type="password" name="password">
+        <label for="phone">Phone number</label>
+        <input type="number" name="phone">
+        <button type="submit" form="nameform" id="submit" value="Submit" class="button-9" role="button">Submit</button>
+        <br>
+        <small>Already have an account? <a href="/login" style="color:white;">Login in</a></small>
+        {{!-- <input type="submit" id="submit" value="Submit"> --}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

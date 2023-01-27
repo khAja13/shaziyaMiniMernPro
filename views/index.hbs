@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="css/{{viewCss}}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    {{> nav }}
+  </header>
+  {{#if success}}
+  <script>
+    function go() {
+      Swal.fire({
+        title: 'Data was deleted successfully.',
+      })
+        .then((result) => {
+        })
+    }
+    go();
+  </script>
+  {{/if}}
+  {{#if error}}
+  <script>
+    function go() {
+      Swal.fire({
+        title: 'Error while deleting the data',
+      })
+        .then((result) => {
+        })
+    }
+    go();
+  </script>
+  {{/if}}
+  <h1 style="text-align: center;">List of All Customer</h1>
+  <div class="table-responsive-sm myTable">
+    <table class="table-stripe">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Customer Name</th>
+          <th>Email</th>
+          <th>password</th>
+          <th>phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+          <td>{{customerId }}</td>
+          <td>{{cName}}</td>
+          <td>{{email}}</td>
+          <td>{{password}}</td>
+          <td>{{phone}}</td>
+          <td><button class="btn btn-danger" value="{{customerId}}" onclick="go(this)">Delete</button>
+            <a class="btn btn-success" href="/update/{{customerId}}">Update</button>
+          </td>
+        </tr>
+        
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+    function go(e) {
+      Swal.fire({
+        title: 'Do you want to delete?',
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location = `/delete/${e.value}`;
+            return;
+          }
+        })
+    }
+  </script>
+</body>
+
+</html>

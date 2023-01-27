@@ -1,0 +1,133 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/{{addCss}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
+
+
+</head>
+
+<body>
+    <header>
+        {{> nav }}
+    </header>
+    {{#if working}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Data was updated successfully.',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                    document.getElementById('form').submit();
+                })
+            }
+            go();
+        </script>
+        <form action="/" id="form"></form>
+    {{/if}}
+    {{#if error}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Some error while inserting data, please try again later.',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                    document.getElementById('form').submit();
+                })
+            }
+            go();
+        </script>
+        <form action="/" id="form"></form>
+    {{/if}}
+    {{#if repeated}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Email is already present',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                    document.getElementById('form').submit();
+                })
+            }
+            go();
+        </script>
+        <form action="/" id="form"></form>
+    {{/if}}
+
+    {{#if absent}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Please input all the values',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                    document.getElementById('form').submit();
+                })
+            }
+            go();
+        </script>
+        <form action="/" id="form"></form>
+    {{/if}}
+
+    <h1 style="text-align: center;">Updated Customer</h1>
+    <div id="update" style="text-align: center;">
+        <form onsubmit="go()" id="bigform" action="/update/{{updateid}}" method="post">
+            {{#data}}
+            <label>
+                <span>Customer Name :</span><br>
+                <input name="cName" type="text" value="{{cName}}"/>
+            </label>
+            <label>
+                <span>Email :</span><br>
+                <input name="email" type="email" value="{{email}}"/>
+            </label>
+            <label>
+                <span>Password :</span><br>
+                <input name="password" type="text" value="{{password}}"/>
+            </label>
+            <label>
+                <span>Phone :</span><br>
+                <input name="phone" type="number" value="{{phone}}"/>
+            </label>
+            {{/data}}
+            <br>
+            <input type="submit" value="Send" />
+        </form>
+    </div>
+    <script>
+
+        function go() {
+            event.preventDefault()
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+            })
+            .then((result) => {
+                console.log(result)
+                if (result.isConfirmed) {
+                    document.getElementById('bigform').submit()
+                    return;
+                } 
+            })
+        }
+
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }   
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "nodemssql",
+  "version": "1.0.0",
+  "description": "ms sql crud ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "immo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "bootstrap": "^5.2.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.3.0",
+    "msnodesqlv8": "^2.7.0",
+    "mssql": "^9.1.1",
+    "readline": "^1.3.0",
+    "serve-favicon": "^2.5.0",
+    "sweetalert2": "^11.6.16"
+  }
+}

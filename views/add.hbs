@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/{{addCss}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        {{> nav }}
+    </header>
+    {{#if working}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Data was inserted successfully.',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                })
+            }
+            go();
+        </script>
+    {{/if}}
+    {{#if error}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Some error while inserting data.',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                })
+            }
+            go();
+        </script>
+    {{/if}}
+    {{#if absent}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Please enter all the values',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                })
+            }
+            go();
+        </script>
+    {{/if}}
+
+    {{#if checkmesg}}
+        <script>
+            function go() {
+                Swal.fire({
+                    title: 'Customer with this email id alredy exist.',
+                    confirmButtonText: 'Okay',
+                })
+                .then((result) => {
+                })
+            }
+            go();
+        </script>
+    {{/if}} 
+
+
+    <h1 style="text-align: center;">Add Customer</h1>
+    <div id="add" style="text-align: center;">
+        <form action="/add" autocomplete="off" method="post">
+            <h4>Please fill all entries.</h4>
+            <label>
+                <span>Customer Name :</span><br>
+                <input class="name" name="cName" type="text" />
+            </label>
+            <label>
+                <span>Email :</span><br>
+                <input class="email" name="email" type="email" />
+            </label>
+            <label>
+                <span>Password :</span><br>
+                <input class="email" name="password" type="text" />
+            </label>
+            <label>
+                <span>Phone :</span><br>
+                <input class="email" name="phone" type="number" />
+            </label>
+            <br>
+            <input type="submit" value="Send" />
+        </form>
+        
+    </div>
+
+
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }   
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+   
+</body>
+
+</html>
