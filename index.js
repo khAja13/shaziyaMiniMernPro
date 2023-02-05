@@ -31,32 +31,19 @@ hbs.registerPartials(partialsPath);
 
 app.use(express.json());
 
-app.get('/signup', (req, res) => {
-  console.log(req.token);
-  if(req.token) {
-    return res.redirect('/')
-  }
-  return res.render("signup", {
-    title: "Signup List Page",
-    viewCss: "login.css",
-  });
-})
 
-app.post('/signup', signup)
 
 // Home
-app.get("/login", token, (req, res) => {
+app.get("/signin", token, (req, res) => {
   console.log(req.token);
   if(req.token) {
     return res.redirect('/')
   }
   console.log("no token");
-  return res.render("login", {
-    title: "Login List Page",
-    viewCss: "login.css",
-  });
+  return res.render("login_signup_API");
 });
 
+app.post('/signup', signup)
 app.post("/login", login);
 
 // All Customer
@@ -79,12 +66,12 @@ app.get("/", token, (req, res) => {
         );
     });
   } 
-  else return res.redirect('/login')
+  else return res.redirect('/signin')
 }); 
 
 app.get('/logout', (req, res) => {
   res.clearCookie('token');
-  return res.redirect('/login')
+  return res.redirect('/signin')
 })
 // ADD
 app.get("/add", token, (req, res) => {

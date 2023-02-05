@@ -109,7 +109,7 @@ module.exports = {
               throw error;
             } else {
               if (results.recordset.length > 0) {
-                return res.render("signup", {
+                return res.render("login_signup_API", {
                   title: "Signup List Page",
                   viewCss: "login.css",
                 });
@@ -139,7 +139,7 @@ module.exports = {
                             }
                           );
                         } else {
-                          return res.render("signup", {
+                          return res.render("login_signup_API", {
                             title: "Signup List Page",
                             viewCss: "login.css",
                           });
@@ -170,7 +170,7 @@ module.exports = {
         if (err) {
           console.log("messed the token");
           res.clearCookie('token');
-          return res.redirect('/login')
+          return res.redirect('/signin')
         } 
         else {
           next()
